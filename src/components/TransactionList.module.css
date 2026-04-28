@@ -1,0 +1,185 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.empty {
+  color: #64748b;
+  font-size: 13px;
+  text-align: center;
+  padding: 30px 20px;
+  border: 1px dashed #1b2447;
+  border-radius: 12px;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 12px 14px;
+  background: #0b122b;
+  border: 1px solid #1b2447;
+  border-radius: 12px;
+
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.item:hover {
+  border-color: #14b8a6;
+  background: #0c152f;
+}
+
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.title {
+  font-size: 13px;
+  color: #e2e8f0;
+  font-weight: 500;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: #64748b;
+}
+
+.badge {
+  background: rgba(20, 184, 166, 0.12);
+  color: #14b8a6;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 10px;
+}
+
+.dot {
+  color: #334155;
+}
+
+.type {
+  text-transform: capitalize;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.amountIncome {
+  font-size: 13px;
+  font-weight: 600;
+  color: #22c55e;
+}
+
+.amountExpense {
+  font-size: 13px;
+  font-weight: 600;
+  color: #f87171;
+}
+
+.editBtn,
+.deleteBtn,
+.saveBtn,
+.cancelBtn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 2px 4px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.editBtn {
+  color: #94a3b8;
+  opacity: 0.8;
+}
+
+.editBtn:hover {
+  color: #7dd3fc;
+}
+
+.deleteBtn {
+  color: #94a3b8;
+}
+
+.deleteBtn:hover {
+  color: #f87171;
+}
+
+.saveBtn {
+  color: #22c55e;
+}
+
+.cancelBtn {
+  color: #f87171;
+}
+
+.input {
+  background: #0f1a3a;
+  border: 1px solid #1b2447;
+  padding: 6px 8px;
+  border-radius: 8px;
+  color: #e2e8f0;
+  font-size: 12px;
+  outline: none;
+  font-family: inherit;
+  width: 120px;
+}
+
+.input:focus {
+  border-color: #14b8a6;
+}
+
+.tooltipWrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+.tooltip {
+  position: absolute;
+
+  bottom: 100%;
+  left: 50%;
+
+  margin-bottom: 6px;
+
+  background: #0b122b;
+  border: 1px solid #1b2447;
+  color: #e2e8f0;
+
+  padding: 4px 8px;
+  font-size: 11px;
+  border-radius: 6px;
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+  transform: translateY(4px);
+
+  white-space: nowrap;
+}
+
+.tooltipWrapper:hover .tooltip {
+  opacity: 1;
+  transform: translateY(0);
+}

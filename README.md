@@ -1,36 +1,162 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Budget Tracker
+
+> Personal finance tracker built with **Next.js + TypeScript** using the **BMAD methodology** (Breakdown → Make → Analyze → Deploy).
+
+![Next.js](https://img.shields.io/badge/Next.js-15-black?style=flat-square&logo=next.js)
+![TypeScript](https://img.shields.io/badge/TypeScript-5-3178c6?style=flat-square&logo=typescript)
+![React](https://img.shields.io/badge/React-19-61dafb?style=flat-square&logo=react)
+![BMAD](https://img.shields.io/badge/BMAD-v6.3-a78bfa?style=flat-square)
+
+---
+
+## Features
+
+- ➕ **Add transactions** — income and expenses with category, description, and date
+- ✏️ **Edit & delete** — inline editing with confirmation
+- 📊 **Balance dashboard** — live net balance, total income, total expenses
+- 🔍 **Filter by month & year** — view any period instantly
+- 📈 **Analytics tab** — expenses by category with bar charts
+- 🥧 **Pie chart** — expense distribution powered by Recharts
+- 💾 **Persistent storage** — data saved in `localStorage`, survives refresh
+
+---
+
+## Tech Stack
+
+| Layer       | Technology                 |
+| ----------- | -------------------------- |
+| Framework   | Next.js 15 (App Router)    |
+| Language    | TypeScript (strict)        |
+| UI          | React 19                   |
+| Styling     | CSS Modules                |
+| Charts      | Recharts                   |
+| Storage     | localStorage               |
+| Methodology | BMAD v6.3                  |
+| Fonts       | Playfair Display + DM Sans |
+| Deploy      | Vercel                     |
+| Icons       | lucide-react               |
+
+---
+
+## BMAD Methodology
+
+This project was built using the **BMAD** (Breakdown → Make → Analyze → Deploy) AI-driven development framework.
+
+```
+B — Breakdown   Split project into isolated units (types, hooks, components, pages)
+M — Make        Build each unit with focused AI prompts
+A — Analyze     Review architecture, UX edge cases, and refactor
+D — Deploy      Ship to Vercel with CI/CD
+```
+
+Key decisions from the Analyze phase:
+
+- Extracted all business logic into `useTransactions` hook — components stay pure UI
+- Used `ClientOnly` wrapper to solve Next.js SSR + localStorage hydration mismatch
+- Separated CSS into `.module.css` files per component — no inline styles
+
+---
+
+## 📁 Project Structure
+
+```
+budget-tracker/
+├── public/
+├── src/
+│   ├── app/             ← Next.js App Router
+│   │   ├── favicon.ico
+│   │   ├── globals.css
+│   │   ├── layout.tsx
+│   │   ├── page.tsx
+│   │   └── page.module.css
+│   ├── components/
+│   ├── hooks/
+│   └── lib/
+│       └── types.ts
+│       └── date.ts
+├── docs/
+├── .gitignore
+├── package.json
+└── README.md
+```
+
+---
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+node -v   # v18 or higher required
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Install & Run
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+# Clone the repo
+git clone https://github.com/yulik777/budget-tracker.git
+cd budget-tracker
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# Install dependencies
+npm install
 
-## Learn More
+# Start dev server
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Build for Production
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm run build
+npm run start
+```
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deploy
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is optimized for **Vercel**:
+
+```bash
+npx vercel        # first deploy
+npx vercel --prod # production
+```
+
+Or connect your GitHub repo at [vercel.com](https://vercel.com) for automatic deploys on every push.
+
+---
+
+## Architecture Decisions
+
+### Why CSS Modules over Tailwind?
+
+CSS Modules keep styles scoped to each component and make the codebase easier to read without class name clutter. No build-time compiler needed.
+
+### Why localStorage over a database?
+
+This is a personal finance tool — single user, no auth needed. localStorage gives instant persistence with zero backend complexity.
+
+### Why `ClientOnly` wrapper?
+
+Next.js renders components on the server first. Since `localStorage` doesn't exist on the server, reading it causes a hydration mismatch. `ClientOnly` renders a placeholder on the server and the real content after mount on the client.
+
+### Why one hook for everything?
+
+`useTransactions` owns all transaction logic: add, edit, delete, filter, balance calculation, and storage sync. Components receive data via props and call callbacks — they contain zero business logic. This makes testing and refactoring trivial.
+
+---
+
+## Docs
+
+| Document                                       | Description                                               |
+| ---------------------------------------------- | --------------------------------------------------------- |
+| [`docs/prd.md`](docs/prd.md)                   | Product Requirements — features, user stories, data model |
+| [`docs/architecture.md`](docs/architecture.md) | Technical architecture — layers, data flow, edge cases    |
+
+---
+
+## 👩‍💻 Author
+
+Built by **YuliiaSkabytska** as a BMAD methodology learning project.

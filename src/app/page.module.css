@@ -1,0 +1,171 @@
+.main {
+  min-height: 100vh;
+  background: #070a1a;
+  padding-bottom: 40px;
+}
+
+.header {
+  background: #0c1024;
+  border-bottom: 1px solid #1b2447;
+  padding: 20px;
+}
+
+.headerInner {
+  max-width: 750px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.appTitle {
+  font-family: "Playfair Display", serif;
+  font-size: 24px;
+
+  background: linear-gradient(135deg, #3ed4d6, #38bdf8);
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+
+  margin: 0;
+}
+
+.appSubtitle {
+  font-size: 12px;
+  color: #94a3b8;
+  margin-top: 2px;
+}
+
+.addBtn {
+  background: linear-gradient(135deg, #14b8a6, #0ea5e9);
+  border: none;
+  color: #fff;
+
+  padding: 10px 20px;
+  border-radius: 10px;
+
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+
+  transition: all 0.2s ease;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.addBtn:hover {
+  filter: brightness(1.05);
+}
+
+.balanceGrid {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 0 20px;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.card {
+  background: #0b122b;
+  border-radius: 14px;
+  padding: 16px;
+  border: 1px solid #1b2447;
+}
+
+.cardLabel {
+  font-size: 11px;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+}
+
+.cardValue {
+  font-size: clamp(16px, 3vw, 22px);
+  font-weight: 700;
+  font-family: "Playfair Display", serif;
+
+  color: #e2e8f0;
+}
+
+.filtersRow {
+  max-width: 800px;
+  margin: 0 auto 4px;
+  padding: 20px 20px;
+
+  display: flex;
+  gap: 10px;
+}
+
+.select {
+  background: #0b122b;
+  font-size: 12px;
+  color: #e2e8f0;
+
+  padding: 8px 10px;
+  border-radius: 8px;
+
+  border: 1px solid #1b2447;
+  font-family: inherit;
+
+  cursor: pointer;
+  outline: none;
+}
+
+.select:focus {
+  border-color: #14b8a6;
+}
+
+.tabsWrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.tabList {
+  display: flex;
+  gap: 4px;
+}
+
+.tab {
+  padding: 10px 20px;
+  border-radius: 8px 8px 0 0;
+
+  border: none;
+  cursor: pointer;
+
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+
+  background: transparent;
+  color: #64748b;
+
+  transition: all 0.2s ease;
+}
+
+.tabActive {
+  background: #0b122b;
+  color: #38bdf8;
+}
+
+.tabPanel {
+  background: #0b122b;
+  border-radius: 0 12px 12px 12px;
+  padding: 20px;
+
+  border: 1px solid #1b2447;
+}
+
+.analyticsPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

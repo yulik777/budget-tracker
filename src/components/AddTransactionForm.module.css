@@ -1,0 +1,137 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(7, 10, 26, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  z-index: 100;
+}
+
+.modal {
+  width: 360px;
+  background: #0b122b;
+  border-radius: 18px;
+  border: 1px solid #1b2447;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 18px;
+  border-bottom: 1px solid #1b2447;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #7dd3fc;
+  margin: 0;
+}
+
+.closeBtn {
+  background: transparent;
+  border: none;
+  color: #64748b;
+  cursor: pointer;
+  font-size: 13px;
+  line-height: 1;
+  transition: color 0.2s ease;
+}
+
+.closeBtn:hover {
+  color: #e2e8f0;
+}
+
+.body {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.fieldWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.label {
+  font-size: 11px;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.input {
+  width: 100%;
+  background: #0f1a3a;
+  border: 1px solid #1b2447;
+  padding: 11px 12px;
+  border-radius: 10px;
+  color: #e2e8f0;
+  font-size: 13px;
+  outline: none;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.input:focus {
+  border-color: #14b8a6;
+}
+
+.inputError {
+  border-color: #f87171;
+}
+
+.error {
+  font-size: 11px;
+  color: #f87171;
+}
+
+.footer {
+  display: flex;
+  gap: 10px;
+  padding: 16px;
+  border-top: 1px solid #1b2447;
+}
+
+.primaryBtn {
+  flex: 1;
+  background: linear-gradient(135deg, #14b8a6, #6366f1);
+  border: none;
+  padding: 11px;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 13px;
+  font-family: inherit;
+  transition: opacity 0.2s ease;
+}
+
+.primaryBtn:hover {
+  opacity: 0.9;
+}
+
+.secondaryBtn {
+  flex: 1;
+  background: transparent;
+  border: 1px solid #1b2447;
+  padding: 11px;
+  border-radius: 10px;
+  color: #94a3b8;
+  cursor: pointer;
+  font-size: 13px;
+  font-family: inherit;
+  transition: all 0.2s ease;
+}
+
+.secondaryBtn:hover {
+  border-color: #334155;
+  color: #e2e8f0;
+}
