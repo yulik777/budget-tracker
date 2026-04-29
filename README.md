@@ -143,6 +143,9 @@ Run tests:
 
 ```bash
 npm run test
+```
+
+---
 
 ## Architecture Decisions
 
@@ -176,4 +179,7 @@ Next.js renders components on the server first. Since `localStorage` doesn't exi
 ## 👩‍💻 Author
 
 Built by **YuliiaSkabytska** as a BMAD methodology learning project.
+
+```
+
 ```
