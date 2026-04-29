@@ -23,18 +23,19 @@
 
 ## Tech Stack
 
-| Layer       | Technology                 |
-| ----------- | -------------------------- |
-| Framework   | Next.js 15 (App Router)    |
-| Language    | TypeScript (strict)        |
-| UI          | React 19                   |
-| Styling     | CSS Modules                |
-| Charts      | Recharts                   |
-| Storage     | localStorage               |
-| Methodology | BMAD v6.3                  |
-| Fonts       | Playfair Display + DM Sans |
-| Deploy      | Vercel                     |
-| Icons       | lucide-react               |
+| Layer       | Technology                   |
+| ----------- | ---------------------------- |
+| Framework   | Next.js 15 (App Router)      |
+| Language    | TypeScript (strict)          |
+| UI          | React 19                     |
+| Styling     | CSS Modules                  |
+| Charts      | Recharts                     |
+| Storage     | localStorage                 |
+| Methodology | BMAD v6.3                    |
+| Fonts       | Playfair Display + DM Sans   |
+| Deploy      | Vercel                       |
+| Icons       | lucide-react                 |
+| Testing     | Jest + React Testing Library |
 
 ---
 
@@ -118,6 +119,7 @@ npm run start
 ## Deploy
 
 This project is optimized for **Vercel**:
+Live demo: https://budget-tracker-dun-six.vercel.app
 
 ```bash
 npx vercel        # first deploy
@@ -127,6 +129,20 @@ npx vercel --prod # production
 Or connect your GitHub repo at [vercel.com](https://vercel.com) for automatic deploys on every push.
 
 ---
+
+## Testing
+
+This project includes unit tests written with **Jest** and **React Testing Library**.
+
+- Component testing for UI behavior
+- Hook testing for business logic (`useTransactions`)
+- Validation and form behavior coverage
+- Utility function tests (formatting, date helpers)
+
+Run tests:
+
+```bash
+npm run test
 
 ## Architecture Decisions
 
@@ -160,3 +176,4 @@ Next.js renders components on the server first. Since `localStorage` doesn't exi
 ## 👩‍💻 Author
 
 Built by **YuliiaSkabytska** as a BMAD methodology learning project.
+```

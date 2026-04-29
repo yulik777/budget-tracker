@@ -33,7 +33,26 @@ export default function HomePage() {
   if (!hydrated) {
     return (
       <main className={styles.main}>
-        <div className={styles.loading}>Loading...</div>
+        <div className={styles.skeletonHeader} />
+
+        <div className={styles.balanceGrid}>
+          {[1, 2, 3].map((i) => (
+            <div key={i} className={styles.skeletonCard} />
+          ))}
+        </div>
+
+        <div className={styles.skeletonFilters} />
+
+        <div className={styles.skeletonTabs}>
+          <div className={styles.skeletonTab} />
+          <div className={styles.skeletonTab} />
+        </div>
+
+        <div className={styles.skeletonList}>
+          {[1, 2, 3, 4].map((i) => (
+            <div key={i} className={styles.skeletonItem} />
+          ))}
+        </div>
       </main>
     );
   }
