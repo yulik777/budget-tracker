@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useMemo, useCallback, useRef } from "react";
 import { Transaction } from "../lib/types";
+import { calculateDailyPulse } from "../lib/pulseInsights";
 
 const STORAGE_KEY = "budget-v1";
 
@@ -71,6 +72,15 @@ export function useTransactions() {
     };
   }, [filteredTransactions]);
 
+  const dailyPulse = useMemo(() => {
+    return calculateDailyPulse(
+      transactions,
+      filteredTransactions,
+      selectedMonth,
+      selectedYear,
+    );
+  }, [transactions, filteredTransactions, selectedMonth, selectedYear]);
+
   return {
     hydrated,
     transactions,
@@ -79,6 +89,7 @@ export function useTransactions() {
     deleteTransaction,
     editTransaction,
     balance,
+    dailyPulse,
     selectedMonth,
     selectedYear,
     setSelectedMonth,

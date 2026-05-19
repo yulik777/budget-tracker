@@ -224,3 +224,8 @@
 .skeletonItem {
   height: 50px;
 }
+.pulseWrapper {
+  max-width: 800px;
+  margin: 20px auto 0;
+  padding: 0 20px;
+}

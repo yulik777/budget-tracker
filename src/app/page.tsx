@@ -8,6 +8,7 @@ import TransactionList from "@/components/TransactionList";
 import CategoryChart from "@/components/CategoryChart";
 import ExpensesPieChart from "@/components/ExpensesPieChart";
 import AddTransactionForm from "@/components/AddTransactionForm";
+import DailyPulseCard from "@/components/DailyPulseCard";
 import { Plus } from "lucide-react";
 import { formatMoney } from "@/lib/format";
 
@@ -18,6 +19,7 @@ export default function HomePage() {
     deleteTransaction,
     editTransaction,
     balance,
+    dailyPulse,
     hydrated,
     selectedMonth,
     setSelectedMonth,
@@ -81,6 +83,12 @@ export default function HomePage() {
           </button>
         </div>
       </header>
+
+      {hydrated && dailyPulse && (
+        <div className={styles.pulseWrapper}>
+          <DailyPulseCard pulse={dailyPulse} />
+        </div>
+      )}
 
       <div className={styles.balanceGrid}>
         {balanceCards.map(({ label, value, color }) => (
