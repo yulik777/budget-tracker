@@ -75,7 +75,7 @@ export function getDailyRecommendation(
   }
 
   if (thisMonthExpense === 0 && thisMonthIncome > 0) {
-    return "Nice start — record one expense to keep your month balanced.";
+    return "Nice start - record one expense to keep your month balanced.";
   }
 
   if (thisMonthIncome === 0 && thisMonthExpense > 0) {
@@ -104,7 +104,7 @@ export function getDailyRecommendation(
       thisMonthExpense > 0 ? Math.round((amount / thisMonthExpense) * 100) : 0;
 
     if (categoryPercent > 40) {
-      return `${category} is ${categoryPercent}% of your spending — try a smaller adjustment there.`;
+      return `${category} is ${categoryPercent}% of your spending - try a smaller adjustment there.`;
     }
 
     return `You're tracking well. Keep an eye on ${category} this month.`;

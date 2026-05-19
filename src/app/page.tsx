@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import styles from "./page.module.css";
 import { useTransactions } from "@/hooks/useTransactions";
@@ -11,6 +11,9 @@ import AddTransactionForm from "@/components/AddTransactionForm";
 import DailyPulseCard from "@/components/DailyPulseCard";
 import { Plus } from "lucide-react";
 import { formatMoney } from "@/lib/format";
+
+import { useRouter } from "next/navigation";
+import { useAuth } from "../../frontend/src/context/authContext";
 
 export default function HomePage() {
   const {
@@ -31,6 +34,16 @@ export default function HomePage() {
   const [activeTab, setActiveTab] = useState<"transactions" | "analytics">(
     "transactions",
   );
+  const { user } = useAuth();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!user) {
+      router.push("/login");
+    }
+  }, [user, router]);
+
+  if (!user) return null;
 
   if (!hydrated) {
     return (
