@@ -7,6 +7,14 @@ import {
   deleteTransaction,
 } from "../services/transactionService";
 
+interface UpdateTransactionData {
+  amount?: number;
+  type?: string;
+  category?: string;
+  description?: string;
+  date?: Date;
+}
+
 export async function list(req: AuthRequest, res: Response): Promise<void> {
   try {
     if (!req.userId) {
@@ -16,8 +24,9 @@ export async function list(req: AuthRequest, res: Response): Promise<void> {
 
     const transactions = await getTransactions(req.userId);
     res.status(200).json({ transactions });
-  } catch (error: any) {
-    res.status(400).json({ error: error.message });
+  } catch (error: unknown) {
+    const message = error instanceof Error ? error.message : "Unknown error";
+    res.status(400).json({ error: message });
   }
 }
 
@@ -44,8 +53,9 @@ export async function create(req: AuthRequest, res: Response): Promise<void> {
     });
 
     res.status(201).json({ transaction });
-  } catch (error: any) {
-    res.status(400).json({ error: error.message });
+  } catch (error: unknown) {
+    const message = error instanceof Error ? error.message : "Unknown error";
+    res.status(400).json({ error: message });
   }
 }
 
@@ -56,10 +66,11 @@ export async function update(req: AuthRequest, res: Response): Promise<void> {
       return;
     }
 
-    const { id } = req.params;
+    const id = Array.isArray(req.params.id) ? req.params.id[0] : req.params.id;
+
     const { amount, type, category, description, date } = req.body;
 
-    const updateData: any = {};
+    const updateData: UpdateTransactionData = {};
     if (amount !== undefined) updateData.amount = parseFloat(amount);
     if (type !== undefined) updateData.type = type;
     if (category !== undefined) updateData.category = category;
@@ -69,8 +80,9 @@ export async function update(req: AuthRequest, res: Response): Promise<void> {
     const transaction = await updateTransaction(req.userId, id, updateData);
 
     res.status(200).json({ transaction });
-  } catch (error: any) {
-    res.status(400).json({ error: error.message });
+  } catch (error: unknown) {
+    const message = error instanceof Error ? error.message : "Unknown error";
+    res.status(400).json({ error: message });
   }
 }
 
@@ -81,12 +93,13 @@ export async function remove(req: AuthRequest, res: Response): Promise<void> {
       return;
     }
 
-    const { id } = req.params;
+    const id = Array.isArray(req.params.id) ? req.params.id[0] : req.params.id;
 
     const transaction = await deleteTransaction(req.userId, id);
 
     res.status(200).json({ transaction });
-  } catch (error: any) {
-    res.status(400).json({ error: error.message });
+  } catch (error: unknown) {
+    const message = error instanceof Error ? error.message : "Unknown error";
+    res.status(400).json({ error: message });
   }
 }
