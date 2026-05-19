@@ -6,6 +6,13 @@ import {
   getCurrentUser,
 } from "../services/authService";
 
+/**
+ * Helper function to safely extract error messages
+ */
+function getErrorMessage(error: unknown): string {
+  return error instanceof Error ? error.message : "Unknown error";
+}
+
 export async function register(req: AuthRequest, res: Response): Promise<void> {
   try {
     const { email, name, password } = req.body;
@@ -24,8 +31,8 @@ export async function register(req: AuthRequest, res: Response): Promise<void> {
         name: user.name,
       },
     });
-  } catch (error: any) {
-    res.status(400).json({ error: error.message });
+  } catch (error: unknown) {
+    res.status(400).json({ error: getErrorMessage(error) });
   }
 }
 
@@ -44,8 +51,8 @@ export async function login(req: AuthRequest, res: Response): Promise<void> {
       token: result.token,
       user: result.user,
     });
-  } catch (error: any) {
-    res.status(401).json({ error: error.message });
+  } catch (error: unknown) {
+    res.status(401).json({ error: getErrorMessage(error) });
   }
 }
 
@@ -59,7 +66,7 @@ export async function me(req: AuthRequest, res: Response): Promise<void> {
     const user = await getCurrentUser(req.userId);
 
     res.status(200).json({ user });
-  } catch (error: any) {
-    res.status(400).json({ error: error.message });
+  } catch (error: unknown) {
+    res.status(400).json({ error: getErrorMessage(error) });
   }
 }
