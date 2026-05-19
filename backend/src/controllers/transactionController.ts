@@ -71,11 +71,16 @@ export async function update(req: AuthRequest, res: Response): Promise<void> {
     const { amount, type, category, description, date } = req.body;
 
     const updateData: UpdateTransactionData = {};
+
     if (amount !== undefined) updateData.amount = parseFloat(amount);
     if (type !== undefined) updateData.type = type;
     if (category !== undefined) updateData.category = category;
     if (description !== undefined) updateData.description = description;
-    if (date !== undefined) updateData.date = new Date(date);
+
+    if (date !== undefined) {
+      const dateString = Array.isArray(date) ? date[0] : date;
+      updateData.date = new Date(dateString);
+    }
 
     const transaction = await updateTransaction(req.userId, id, updateData);
 
@@ -85,7 +90,6 @@ export async function update(req: AuthRequest, res: Response): Promise<void> {
     res.status(400).json({ error: message });
   }
 }
-
 export async function remove(req: AuthRequest, res: Response): Promise<void> {
   try {
     if (!req.userId) {
