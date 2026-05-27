@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from "express";
+import { Request, Response, NextFunction, ErrorRequestHandler } from "express";
 import { verifyToken } from "../utils/jwt";
 
 export interface AuthRequest extends Request {
@@ -33,19 +33,26 @@ export function authMiddleware(
     req.email = payload.email;
 
     next();
-  } catch (error) {
+  } catch {
     res.status(401).json({ error: "Authentication failed" });
   }
 }
 
-export function errorMiddleware(
-  err: any,
-  req: Request,
-  res: Response,
-  next: NextFunction,
-): void {
+type AppError = {
+  status?: number;
+  message?: string;
+};
+
+export const errorMiddleware: ErrorRequestHandler = (
+  err: unknown,
+  _req,
+  res,
+) => {
   console.error(err);
-  res
-    .status(err.status || 500)
-    .json({ error: err.message || "Internal server error" });
-}
+
+  const error = err as AppError;
+
+  res.status(error.status ?? 500).json({
+    error: error.message ?? "Internal server error",
+  });
+};
